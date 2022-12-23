@@ -3,6 +3,15 @@ html, body {
   max-width: 1440px;
   margin: auto;
   padding: 0;
+  overflow-x: hidden;
+}
+
+#chk1, .inscription_small_screen {
+  display: none;
+}
+
+.menu {
+  display: none;
 }
 
 header {
@@ -34,6 +43,7 @@ ul {
   margin: auto;
   list-style: none;
   text-align: right;
+  padding-top: 30px;
 }
 ul li {
   display: inline;
@@ -48,7 +58,7 @@ ul li > a {
 
 .container {
   width: 95%;
-  height: 600px;
+  height: 800px;
   margin: auto;
   padding-top: 50px;
   position: relative;
@@ -59,19 +69,24 @@ ul li > a {
   border-radius: 1%;
   border: none;
 }
-.container .left {
+.container .contains {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.container .contains .left {
   width: 40%;
   height: 100%;
   background-color: rgba(28, 23, 23, 0.936);
   display: inline-block;
   border-radius: 1% 0 0 1%;
 }
-.container .right {
+.container .contains .right {
   width: 60%;
   height: 100%;
   display: inline-block;
 }
-.container .right .img {
+.container .contains .right .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -85,7 +100,7 @@ ul li > a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0 50px;
+  padding: 50px;
 }
 .container .content .heading {
   font-size: 6rem;
@@ -94,18 +109,24 @@ ul li > a {
   width: 30%;
   font-size: 1.3rem;
 }
-.container .content #btn--inscription {
+
+.inscription {
+  padding-bottom: 0px;
+}
+.inscription #btn--inscription {
   background: #ba1c1c;
   border: red;
   cursor: pointer;
   border-radius: 0.3rem;
   font-size: 1rem;
   color: #fff;
-  width: 9%;
+  width: 10%;
   padding: 5px;
+  text-align: center;
 }
 
 .modal {
+  padding-left: 30%;
   display: none;
   position: fixed;
   z-index: 1;
@@ -117,39 +138,42 @@ ul li > a {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.modal-content {
+.modal .modal-content {
+  overflow: hidden;
   border-radius: 10px;
   background-color: rgb(18, 17, 17);
-  margin: 15% auto;
-  padding: 20px;
+  margin: auto;
+  padding-left: 20px;
   border: 1px solid rgb(18, 17, 17);
-  width: 50%;
-  height: 800px;
+  width: 35rem;
+  height: 700px;
+  position: fixed;
+  font-size: 15px;
 }
-.modal-content .formulaire {
+.modal .modal-content .formulaire {
   width: 100%;
   padding-left: 10%;
   color: white;
 }
-.modal-content .formulaire .form-content {
+.modal .modal-content .formulaire .form-content {
   width: 100%;
   margin: auto;
 }
-.modal-content .formulaire .form-content .radio {
+.modal .modal-content .formulaire .form-content .radio {
+  text-align: center;
   display: flex;
   width: 70%;
 }
-.modal-content .formulaire .form-content input {
-  width: 80%;
+.modal .modal-content .formulaire .form-content input {
+  width: 60%;
   border-radius: 10px;
-  height: 50px;
+  height: 30px;
 }
 
 .btnvalidation {
   text-align: center;
 }
-.btnvalidation #btn--validation {
+.btnvalidation > button {
   background: #ba1c1c;
   border: red;
   cursor: pointer;
@@ -191,11 +215,11 @@ ul li > a {
 .modal_validation-content {
   border-radius: 10px;
   background-color: rgb(18, 17, 17);
-  margin: 15% auto;
-  padding: 20px;
+  margin-left: 15%;
+  padding-top: 50px;
   border: 1px solid rgb(18, 17, 17);
   width: 50%;
-  height: 800px;
+  height: 600px;
 }
 .modal_validation-content > p {
   font-size: 5rem;
@@ -204,7 +228,7 @@ ul li > a {
 }
 .modal_validation-content .btnfermeture {
   text-align: center;
-  padding-top: 350px;
+  padding-top: 300px;
 }
 .modal_validation-content .btnfermeture #btn--fermeture {
   background: #ba1c1c;
@@ -217,10 +241,543 @@ ul li > a {
   text-align: center;
   padding: 5px;
 }
+.modal_validation-content .pop_in {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(11, 13, 42, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  color: red;
+}
+.modal_validation-content .pop_in .pop_in:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal_validation-content .pop_in .pop_in > div {
+  max-width: 350px;
+  position: relative;
+  margin: 1% auto;
+  padding: 15px 10px 15px 10px;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  color: red;
+}
+.modal_validation-content .pop_in .pop_in:target > div {
+  margin: 10% auto;
+  transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+* button {
+  text-align: center;
+  color: red;
+}
+
+#chk1 {
+  display: none;
+}
+
+i {
+  color: #fff;
+  cursor: pointer;
+}
+
+header .logo {
+  flex: 1;
+  color: #fff;
+  margin-left: 50px;
+  text-transform: uppercase;
+  font-size: 15px;
+}
 
 footer {
   padding-top: 80px;
   color: red;
+}
+
+.small_screen {
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .ul_nav, .inscription {
+    display: none;
+  }
+  .small_screen {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  .small_screen a {
+    font-size: 10px;
+    display: inline;
+  }
+  #chk1 {
+    display: none;
+  }
+  header ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    right: -100%;
+    width: 20%;
+    font-size: 12px;
+    align-items: center;
+    transition: right 0.5s linear;
+  }
+  header .menu {
+    display: block;
+    width: 100px;
+    text-align: center;
+    color: red;
+    font-size: 12px;
+    padding-top: 20px;
+  }
+  #chk1:checked ~ ul {
+    right: 0;
+    font-size: 12px;
+  }
+  .logo {
+    padding: 0;
+  }
+  .btn--details {
+    background: none;
+    border-radius: 0%;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+  }
+  .btn--details > a {
+    color: black;
+    text-decoration: none;
+  }
+  .container {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: none;
+  }
+  .container .contains {
+    width: 100%;
+    height: 50%;
+    padding-top: 150px;
+  }
+  .container .contains .left {
+    display: none;
+  }
+  .container .contains .right {
+    width: 100%;
+    height: 50%;
+  }
+  .container .contains .right .img {
+    width: 100%;
+    height: 50%;
+    border-radius: 1% 1% 1% 1%;
+  }
+  .container .content {
+    color: black;
+    width: 100%;
+    padding: 0;
+  }
+  .container .content .text_on_image {
+    display: block;
+    padding-bottom: 30rem;
+  }
+  .container .content .text_on_image .heading {
+    width: 100%;
+    font-size: 3rem;
+  }
+  .container .content .text_on_image .byline {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .inscription_small_screen {
+    display: block;
+    text-align: center;
+  }
+  .inscription_small_screen #btn--inscription_small_screen {
+    background: #ba1c1c;
+    border: red;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 30%;
+    padding: 5px;
+  }
+  .modal {
+    font-size: 80px;
+    padding-left: 25%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal .modal-content {
+    border-radius: 10px;
+    background-color: rgb(18, 17, 17);
+    margin-top: 10px;
+    border: 1px solid rgb(18, 17, 17);
+    width: 50%;
+    height: 90%;
+    position: fixed;
+  }
+  .modal .modal-content .formulaire {
+    font-size: 10px;
+    padding: 10%;
+    color: white;
+  }
+  .modal .modal-content .formulaire .form-content {
+    font-size: 10px;
+    width: 100%;
+    margin: auto;
+  }
+  .modal .modal-content .formulaire .form-content input {
+    width: 100%;
+    border-radius: 10px;
+    height: 20px;
+  }
+  .modal .modal-content .formulaire .form-content .radio {
+    display: flex;
+    width: 80%;
+    text-align: center;
+  }
+  .modal .modal-content .btnvalidation {
+    text-align: center;
+    padding-top: 20px;
+  }
+  .modal .modal-content .btnvalidation > button {
+    background: #ba1c1c;
+    border: red;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 35%;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal_validation {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal_validation .modal_validation-content {
+    border-radius: 10px;
+    background-color: rgb(18, 17, 17);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgb(18, 17, 17);
+    width: 50%;
+    height: 800px;
+  }
+  .modal_validation .modal_validation-content > p {
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+  }
+  .modal_validation .modal_validation-content .btnfermeture {
+    text-align: center;
+    padding-top: 40px;
+  }
+  .modal_validation .modal_validation-content .btnfermeture #btn--fermeture {
+    background: #ba1c1c;
+    border: red;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 25%;
+    text-align: center;
+    padding: 5px;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: rgb(207, 199, 199);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  footer {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 767px) {
+  .ul_nav, .inscription {
+    display: none;
+  }
+  .small_screen {
+    display: inline;
+  }
+  .small_screen a {
+    display: inline;
+  }
+  #chk1 {
+    display: none;
+  }
+  header ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    right: -100%;
+    width: 30%;
+    align-items: center;
+    transition: right 0.5s linear;
+  }
+  header .menu {
+    display: block;
+    width: 100px;
+    text-align: center;
+    padding-top: 30px;
+  }
+  #chk1:checked ~ ul {
+    right: 0;
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+  .btn--details {
+    background: none;
+    text-align: center;
+  }
+  .btn--details > a {
+    color: black;
+    text-decoration: none;
+  }
+  .logo {
+    padding: 0px;
+  }
+  .container {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: none;
+  }
+  .container .contains {
+    width: 100%;
+    height: 50%;
+    padding-top: 150px;
+  }
+  .container .contains .left {
+    display: none;
+  }
+  .container .contains .right {
+    width: 100%;
+    height: 50%;
+  }
+  .container .contains .right .img {
+    width: 100%;
+    height: 50%;
+    border-radius: 1% 1% 1% 1%;
+  }
+  .container .content {
+    color: black;
+    width: 100%;
+    padding: 0;
+  }
+  .container .content .text_on_image {
+    padding-bottom: 18rem;
+    font-size: 1rem;
+  }
+  .container .content .text_on_image .heading {
+    width: 90%;
+    font-size: 2rem;
+  }
+  .container .content .text_on_image .byline {
+    width: 90%;
+    font-size: 1rem;
+  }
+  .modal {
+    padding-left: 12%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal .modal-content {
+    border-radius: 10px;
+    background-color: rgb(18, 17, 17);
+    margin-top: 50px;
+    border: 1px solid rgb(18, 17, 17);
+    width: 70%;
+    height: 500px;
+    position: fixed;
+  }
+  .modal .modal-content .formulaire {
+    font-size: 8px;
+    width: 100%;
+    padding-left: 1px;
+    color: white;
+  }
+  .modal .modal-content .formulaire .form-content {
+    font-size: 8px;
+    width: 100%;
+    margin: auto;
+    margin-right: 90px;
+  }
+  .modal .modal-content .formulaire .form-content .radio {
+    display: flex;
+    width: 60%;
+    font-size: 7px;
+  }
+  .modal .modal-content .formulaire .form-content input {
+    width: 90%;
+    border-radius: 10px;
+    height: 20px;
+  }
+  .modal .modal-content .btnvalidation {
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+  .modal .modal-content .btnvalidation > button {
+    background: #ba1c1c;
+    border: red;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 40%;
+    text-align: center;
+  }
+  .modal_validation {
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal_validation .modal_validation-content {
+    border-radius: 10px;
+    background-color: rgb(18, 17, 17);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgb(18, 17, 17);
+    width: 100%;
+    height: 800px;
+  }
+  .modal_validation .modal_validation-content > p {
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+  }
+  .modal_validation .modal_validation-content .pop_in {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(11, 13, 42, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    color: red;
+  }
+  .modal_validation .modal_validation-content .pop_in .pop_in:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal_validation .modal_validation-content .pop_in .pop_in > div {
+    max-width: 350px;
+    position: relative;
+    margin: 1% auto;
+    padding: 15px 10px 15px 10px;
+    border-radius: 4px;
+    background: #fff;
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    color: red;
+  }
+  .modal_validation .modal_validation-content .pop_in .pop_in:target > div {
+    margin: 10% auto;
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+  }
+  .modal_validation .modal_validation-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .modal_validation .modal_validation-content .close:hover,
+  .modal_validation .modal_validation-content .close:focus {
+    color: rgb(207, 199, 199);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .inscription_small_screen {
+    display: block;
+    text-align: center;
+  }
+  .inscription_small_screen #btn--inscription_small_screen {
+    background: #ba1c1c;
+    border: red;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 30%;
+    padding: 5px;
+  }
+  footer {
+    color: red;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
