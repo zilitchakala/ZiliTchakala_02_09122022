@@ -40,14 +40,12 @@
         
                 
         </ul>
-                
-            <div class="menu">
-                <label for="chk1">
-                    <i class="fa fa-bars" style="color:red"></i>
-                </label>
-            </div>
-        
 
+        <div class="menu">
+            <label for="chk1">
+                <i class="fa fa-bars" style="color:red"></i>
+            </label>
+        </div>
             
         <div class="ul_nav">
 
@@ -117,14 +115,51 @@
 
         <div id="myModal" class="modal">
     
-            
+            <header class="header_modal">
+                <div class="logo">
+                    <img src="./img/logo.jpg" alt="logo">
+                </div>    
+        
+                <input type ="checkbox" id ="chk1">
+        
+                <ul class="small_screen">
+                    
+        
+                    <li class="btn--details">
+                        <a href="#">Details de l'événement</a>
+                    </li>
+                    <li>
+                        <a href="#">A Propos</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#">Evénements passés</a>
+                    </li>
+                
+                        
+                </ul>
+        
+                <div class="menu">
+                    <label for="chk1">
+                        <i class="fa fa-bars" style="color:red"></i>
+                    </label>
+                </div>
+        
+            </header>
             <div class="modal-content">
+                
                 <span class="close">&times;</span>
                 
                 <div class="formulaire">
 
                     <form action ="#myModalValidation" method="POST" id="myForm" name="inscription">
+
+
                         <div class="form-content">
+
+                          
 
                             <label for="prenom"> Prénom </label>
                             <br> <br>
@@ -174,6 +209,7 @@
                                 <input type="radio" name="portland" value="portland" id="pl">
                                 <label for="pl"> Portland </label>
                             </div>
+
                             <p style="color: red;" class="error"></p>
                             
                         </div>
