@@ -7,15 +7,10 @@ html, body {
 }
 
 .header_modal {
-  width: 57%;
-  background: white;
-  padding: 0;
-  padding-bottom: 20px;
-  margin-right: 450px;
-  border-radius: 10%/10%;
+  display: none;
 }
 
-#chk1, .inscription_small_screen {
+#chk1, .inscription_small_screen, .header_modalvalidation {
   display: none;
 }
 
@@ -27,11 +22,6 @@ header {
   display: flex;
   justify-content: space-between;
   margin: auto;
-  padding-top: 30px;
-}
-
-.logo {
-  padding-left: 35px;
 }
 
 .btn--details {
@@ -135,7 +125,7 @@ ul li > a {
 }
 
 .modal {
-  padding-left: 30%;
+  padding-left: 20%;
   display: none;
   position: fixed;
   z-index: 1;
@@ -155,7 +145,6 @@ ul li > a {
   border-radius: 10px;
   background-color: rgb(18, 17, 17);
   margin: auto;
-  padding-left: 20px;
   border: 1px solid rgb(18, 17, 17);
   width: 35rem;
   height: 700px;
@@ -164,7 +153,7 @@ ul li > a {
 }
 .modal .modal-content .formulaire {
   width: 100%;
-  padding-left: 12%;
+  padding-left: 10%;
   color: white;
 }
 .modal .modal-content .formulaire .form-content {
@@ -177,13 +166,14 @@ ul li > a {
   width: 70%;
 }
 .modal .modal-content .formulaire .form-content input {
-  width: 60%;
-  border-radius: 10px;
-  height: 20px;
+  width: 90%;
+  border-radius: 7px;
+  height: 40px;
 }
 
 .btnvalidation {
   text-align: center;
+  padding-top: 30px;
 }
 .btnvalidation > button {
   background: #ba1c1c;
@@ -232,6 +222,9 @@ ul li > a {
   border: 1px solid rgb(18, 17, 17);
   width: 50%;
   height: 600px;
+}
+.modal_validation-content .mvf {
+  padding-top: 300px;
 }
 .modal_validation-content > p {
   font-size: 5rem;
@@ -321,6 +314,7 @@ header .logo {
 
 footer {
   padding-top: 80px;
+  padding-left: 10px;
   color: red;
 }
 
@@ -330,12 +324,21 @@ footer {
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .header_modal {
+    display: flex;
     width: 67%;
+    height: 70px;
     background: white;
     padding: 0;
     padding-bottom: 20px;
     margin-right: 250px;
-    border-radius: 10%/10%;
+  }
+  .header_modalvalidation {
+    display: flex;
+    width: 100%;
+    background: white;
+    padding: 0;
+    padding-bottom: 20px;
+    margin-right: 250px;
   }
   .ul_nav, .inscription {
     display: none;
@@ -463,7 +466,7 @@ footer {
     background-color: rgb(18, 17, 17);
     border: 1px solid rgb(18, 17, 17);
     width: 50%;
-    height: 90%;
+    height: 100%;
     position: fixed;
   }
   .modal .modal-content .formulaire {
@@ -478,8 +481,8 @@ footer {
   }
   .modal .modal-content .formulaire .form-content input {
     width: 100%;
-    border-radius: 10px;
-    height: 30px;
+    border-radius: 7px;
+    height: 40px;
   }
   .modal .modal-content .formulaire .form-content .radio {
     display: flex;
@@ -488,7 +491,7 @@ footer {
   }
   .modal .modal-content .btnvalidation {
     text-align: center;
-    padding-top: 60px;
+    padding-top: 15px;
   }
   .modal .modal-content .btnvalidation > button {
     background: #ba1c1c;
@@ -508,7 +511,7 @@ footer {
     left: 0;
     top: 0;
     width: 100%;
-    height: 90%;
+    height: 100%;
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
@@ -516,14 +519,19 @@ footer {
   .modal_validation .modal_validation-content {
     border-radius: 10px;
     background-color: rgb(18, 17, 17);
-    margin: 15% auto;
+    margin: auto;
     padding: 20px;
     border: 1px solid rgb(18, 17, 17);
-    width: 50%;
-    height: 800px;
+    width: 80%;
+    height: 100%;
+  }
+  .modal_validation .modal_validation-content .mvf {
+    padding-top: 100px;
+    position: absolute;
+    left: 0px;
   }
   .modal_validation .modal_validation-content > p {
-    font-size: 5rem;
+    font-size: 3rem;
     color: white;
     text-align: center;
   }
@@ -560,12 +568,20 @@ footer {
 }
 @media screen and (max-width: 767px) {
   .header_modal {
+    display: flex;
     width: 80%;
     background: white;
     padding: 0;
     padding-bottom: 20px;
     margin-right: 250px;
-    border-radius: 10%/10%;
+  }
+  .header_modalvalidation {
+    display: flex;
+    width: 100%;
+    background: white;
+    padding: 0;
+    padding-bottom: 20px;
+    margin-right: 250px;
   }
   .ul_nav, .inscription {
     display: none;
@@ -669,15 +685,16 @@ footer {
   .modal .modal-content {
     border-radius: 10px;
     background-color: rgb(18, 17, 17);
+    padding-left: 15px;
     border: 1px solid rgb(18, 17, 17);
     width: 70%;
-    height: 500px;
+    height: 600px;
     position: fixed;
   }
   .modal .modal-content .formulaire {
     font-size: 8px;
     width: 100%;
-    padding-left: 1px;
+    padding-left: 5px;
     color: white;
   }
   .modal .modal-content .formulaire .form-content {
@@ -693,8 +710,8 @@ footer {
   }
   .modal .modal-content .formulaire .form-content input {
     width: 90%;
-    border-radius: 10px;
-    height: 30px;
+    border-radius: 7px;
+    height: 40px;
   }
   .modal .modal-content .btnvalidation {
     text-align: center;
@@ -733,8 +750,13 @@ footer {
     width: 100%;
     height: 800px;
   }
+  .modal_validation .modal_validation-content .mvf {
+    padding-top: 100px;
+    position: absolute;
+    right: 160px;
+  }
   .modal_validation .modal_validation-content > p {
-    font-size: 5rem;
+    font-size: 3rem;
     color: white;
     text-align: center;
   }
