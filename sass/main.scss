@@ -7,15 +7,10 @@ html, body {
     }
 
     .header_modal {
-        width: 57%;
-        background: white;
-        padding: 0;
-        padding-bottom: 20px;
-        margin-right: 450px;
-        border-radius: 10% / 10%;
+        display: none;
     }
 
-    #chk1,.inscription_small_screen {
+    #chk1, .inscription_small_screen , .header_modalvalidation {
         display: none; 
     }
     
@@ -27,14 +22,14 @@ html, body {
     display: flex;
     justify-content:space-between;
     margin:auto;
-    padding-top:30px;
+    // padding-top:30px;
     }
     
      
-    .logo {
-    padding-left:35px;
+    // .logo {
+    // padding-left:25px;
     
-    }
+    // }
 
     .btn--details {
     background: #ba1c1c;
@@ -167,7 +162,7 @@ ul {
         display: block; 
     }
 
-    padding-left: 30%;
+    padding-left: 20%;
     display: none;
     position: fixed;
     z-index: 1;
@@ -185,7 +180,7 @@ ul {
         border-radius: 10px;
         background-color: rgb(18, 17, 17);
         margin: auto;
-        padding-left: 20px;
+        // padding-left: 10px;
         border: 1px solid rgb(18, 17, 17);
         width: 35rem;
         height: 700px;
@@ -194,7 +189,7 @@ ul {
         
         .formulaire {
             width:100%;
-            padding-left: 12%;
+            padding-left: 10%;
             color: white;
             .form-content {
             
@@ -208,10 +203,10 @@ ul {
                 }
             
                 input {
-                    width: 60%;
+                    width: 90%;
                     
-                    border-radius: 10px;
-                    height: 20px;
+                    border-radius: 7px;
+                    height: 40px;
                 }
                
             }
@@ -224,6 +219,7 @@ ul {
     
     .btnvalidation {
         text-align: center;
+        padding-top: 30px;
     
         >button {
             background: #ba1c1c;
@@ -275,6 +271,11 @@ ul {
     border: 1px solid rgb(18, 17, 17);
     width: 50%;
     height: 600px;
+
+    .mvf {
+        padding-top: 300px;
+        
+    }
 
     >p {
         font-size: 5rem;
@@ -380,6 +381,7 @@ header .logo{
 
 footer {
     padding-top: 80px;
+    padding-left: 10px;
     color:red;
 }
 
@@ -391,12 +393,22 @@ footer {
 @media screen and (min-width: 768px) and (max-width:992px) {
 
     .header_modal {
+        display: flex;
         width: 67%;
+        height: 70px;
         background: white;
         padding: 0;
         padding-bottom: 20px;
-        margin-right: 250px;
-        border-radius: 10% / 10%;
+        margin-right: 250px;     
+    }
+
+    .header_modalvalidation {
+        display: flex;
+        width: 100%;
+        background: white;
+        padding: 0;
+        padding-bottom: 20px;
+        margin-right: 250px;     
     }
 
     .ul_nav, .inscription {
@@ -497,8 +509,7 @@ footer {
     
 
         }
-        
-        
+            
         .content {
             color: black;
             width: 100%;
@@ -568,7 +579,7 @@ footer {
             
             border: 1px solid rgb(18, 17, 17);
             width: 50%;
-            height: 90%;
+            height: 100%;
             position: fixed;
             
             .formulaire {
@@ -587,8 +598,8 @@ footer {
                     input {
                         
                         width: 100%;
-                        border-radius: 10px;
-                        height: 30px;
+                        border-radius: 7px;
+                        height: 40px;
                     }
     
                     .radio {
@@ -607,7 +618,7 @@ footer {
         
             .btnvalidation {
                 text-align: center;
-                padding-top: 60px;
+                padding-top: 15px;
         
                 >button {
                     background: #ba1c1c;
@@ -633,7 +644,7 @@ footer {
         left: 0;
         top: 0;
         width: 100%;
-        height: 90%;
+        height: 100%;
         overflow: auto;
         background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.4);
@@ -641,14 +652,21 @@ footer {
         .modal_validation-content {
             border-radius: 10px;
             background-color: rgb(18, 17, 17);
-            margin: 15% auto;
+            margin: auto;
             padding: 20px;
             border: 1px solid rgb(18, 17, 17);
-            width: 50%;
-            height: 800px;
+            width: 80%;
+            height: 100%;
+
+            .mvf {
+                padding-top: 100px;
+                position: absolute;
+                left: 0px;
+                
+            }
         
             >p {
-                font-size: 5rem;
+                font-size: 3rem;
                 color: white;
                 text-align: center;
                 
@@ -702,12 +720,22 @@ footer {
 @media screen and (max-width: 767px){
 
     .header_modal {
+        display: flex;
         width: 80%;
         background: white;
         padding: 0;
         padding-bottom: 20px;
         margin-right: 250px;
-        border-radius: 10% / 10%;
+        // border-radius: 10% / 10%;
+    }
+
+    .header_modalvalidation {
+        display: flex;
+        width: 100%;
+        background: white;
+        padding: 0;
+        padding-bottom: 20px;
+        margin-right: 250px;
     }
 
     .ul_nav,.inscription {
@@ -856,11 +884,11 @@ footer {
             
             border-radius: 10px;
             background-color: rgb(18, 17, 17);
-            // margin-top: 70px;
+            padding-left: 15px;
             
             border: 1px solid rgb(18, 17, 17);
             width: 70%;
-            height: 500px;
+            height: 600px;
             position: fixed;
             
             
@@ -868,7 +896,7 @@ footer {
             .formulaire {
                 font-size: 8px;
                 width:100%;
-                padding-left: 1px;
+                padding-left: 5px;
                 color: white;
     
                 .form-content {
@@ -888,8 +916,8 @@ footer {
                     input {
                         width: 90%;
                     
-                        border-radius: 10px;
-                        height: 30px;
+                        border-radius: 7px;
+                        height: 40px;
                     }
                    
                 }
@@ -939,9 +967,16 @@ footer {
             border: 1px solid rgb(18, 17, 17);
             width: 100%;
             height: 800px;
+
+            .mvf {
+                padding-top: 100px;
+                position: absolute;
+                right: 160px;
+                
+            }
         
             >p {
-                font-size: 5rem;
+                font-size: 3rem;
                 color: white;
                 text-align: center;
                 
