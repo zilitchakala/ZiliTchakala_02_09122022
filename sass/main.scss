@@ -598,9 +598,8 @@ footer {
         background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.4);
 
-        .modal-content {
-            
-            border-radius: 10px;
+        .modal-content { 
+            border-radius: 5px;
             background-color: rgb(18, 17, 17);
             // margin-top: 20px;
             
@@ -612,13 +611,11 @@ footer {
             .formulaire {
                 
                 font-size: 15px;
-                
-                padding: 10%;
                 color: white;
     
                 .form-content {
                     font-size: 15px;
-                    width: 100%;
+                    width: 85%;
                     margin: auto;
 
                     .cocher {
